@@ -1,0 +1,66 @@
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<div class="container">
+    <div class="row">
+        <div style="text-align: center">
+            <h2>@Model.DisplayName (@Model.TagName)</h2>
+            <img src="@Model.AvatarUri" class="rounded-circle" height="250px" alt="...">
+        </div>
+    </div>
+    <div class="row">
+        @foreach (var post in Model.Posts)
+        {
+            <div class="card m-2">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <b>@post.User.DisplayName</b> <small class="text-body-secondary">@post.User.TagName · @post.WasPosted</small>
+                    </h5>
+                    <p class="card-text">
+                        @post.Text
+                    </p>
+                </div>
+                <img src="@post.ImageUri" class="card-img-bottom" alt="...">
+                <div class="card-body">
+                    <div class="row justify-content-between">
+                        <button type="button" class="col-sm-6 col-lg-2 btn btn-outline-primary">
+                            Reply <span class="badge text-bg-light"></span>
+                        </button>
+                        <button type="button" class="col-sm-6 col-lg-2 btn btn-outline-primary">
+                            Repost @post.Reposts
+                        </button>
+                        <button type="button" class="col-sm-6 col-lg-2 btn btn-outline-primary">
+                            Like @post.Likes
+                        </button>
+                        <button type="button" class="col-sm-6 col-lg-2 btn btn-outline-primary">
+                            Views @post.Views
+                        </button>
+                        <button type="button" class="col-sm-6 col-lg-2 btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal-@post.Id">
+                            Share
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="modal-@post.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">URL</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            @post.ImageUri
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Copy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

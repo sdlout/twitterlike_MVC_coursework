@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/twitterlike_MVC_coursework.props" />
+</Project>

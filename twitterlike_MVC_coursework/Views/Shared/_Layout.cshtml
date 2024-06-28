@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - twitterlike</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/twitterlike_MVC_coursework.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-2 col-sm-3 col-xxl-2">
+            <nav class="navbar navbar-expand-sm">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                @* <a class="nav-link disabled" href="#">Home</a> *@
+                                <a class="nav-link @(Html.IsDisabled("Home", "Index"))" href="/Home/Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Explore</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Notification</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Messages</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Lists</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Communities</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @(Html.IsDisabled("Home", "Profile"))" href="/Home/Profile">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">More</a>
+                            </li>
+                            <li class="nav-item">
+                                <button type="button" class="btn btn-post" data-bs-toggle="modal" data-bs-target="#postModal">Post</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Nav</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Explore</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Notification</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Messages</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Lists</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Communities</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">More</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <main role="main" class="col-10 col-sm-9 col-md-6 col-xxl-8">
+            @RenderBody()
+        </main>
+    
+        <div class="col-md-3 d-none d-md-block col-xxl-2">
+            <h2 class="m-2">Trends for you</h2>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="#" class="trending">
+                        <div class="card-body">
+                            <div class="card-text">
+                                <small class="text-body-secondary">Technology · Trending</small>
+                            </div>
+                            <div class="card-title"><h5>adblock</h5></div>
+                            <div class="card-text">
+                                <small class="text-body-secondary">3,151 posts</small>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+
+                <li class="list-group-item">
+                    <a href="#" class="trending">
+                        <div class="card-body">
+                            <div class="card-text">
+                                <small class="text-body-secondary">Trending</small>
+                            </div>
+                            <div class="card-title"><h5>#sext</h5></div>
+                            <div class="card-text">
+                                <small class="text-body-secondary">18.7K posts</small>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+
+                <li class="list-group-item">
+                    <a href="#" class="trending">
+                        <div class="card-body">
+                            <div class="card-text">
+                                <small class="text-body-secondary">Gaming · Trending</small>
+                            </div>
+                            <div class="card-title"><h5>Nintendo</h5></div>
+                            <div class="card-text">
+                                <small class="text-body-secondary">72.8K posts</small>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+
+                <li class="list-group-item">
+                    <a href="#" class="trending">
+                        <div class="card-body">
+                            <div class="card-text">
+                                <small class="text-body-secondary">Trending</small>
+                            </div>
+                            <div class="card-title"><h5>Denji</h5></div>
+                            <div class="card-text">
+                                <small class="text-body-secondary">8,248 posts</small>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+
+                <li class="list-group-item">
+                    <a href="#" class="trending">
+                        <div class="card-body">
+                            <div class="card-text">
+                                <small class="text-body-secondary">Technology · Trending</small>
+                            </div>
+                            <div class="card-title"><h5>adblock</h5></div>
+                            <div class="card-text">
+                                <small class="text-body-secondary">3,151 posts</small>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2024 - twitterlike. Done as Kharkiv National University of Radio Electronics Coursework - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+</footer>
+
+<!-- Post Modal -->
+<div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="postModalLabel">Create a new post</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="postForm">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="postText" class="form-label">What is happening?</label>
+                        <textarea class="form-control" id="postText" name="Text" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="postImageUri" class="form-label">Image URL</label>
+                        <input type="text" class="form-control" id="postImageUri" name="ImageUri">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- JavaScript code integrated directly into the layout -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById('postForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const formData = {
+                Text: document.getElementById('postText').value,
+                ImageUri: document.getElementById('postImageUri').value
+            };
+
+            fetch('/Home/CreatePost', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Error creating post');
+                    }
+                })
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('postModal').classList.remove('show');
+                        document.body.classList.remove('modal-open');
+                        document.querySelector('.modal-backdrop').remove();
+                        alert('Post created successfully!');
+                        location.reload();
+                    } else {
+                        alert('Error creating post');
+                    }
+                })
+                .catch(error => {
+                    alert(error.message);
+                });
+        });
+    });
+</script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
